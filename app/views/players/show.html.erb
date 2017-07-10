@@ -1,10 +1,18 @@
-<%= render 'shared/page_title' , title: @player.name %>
+<%= render 'shared/page_title' , title: @player.name.upcase %>
+<div class="row">
+	<div class="col-md-2">
+		<h5><%= link_to "Edit player info", edit_player_path , class: "btn btn-success btn-small" %>
+			
+		</h5>
+	</div>
+</div>
+
 <div class="row">
 	<div class="col-md-4 pull-right center">
-		<%unless @player.images.blank? %>
-					<%= image_tag @player.images.first.url , size: '100x100' , style: "border-radius: 10px;" %>
+		<%unless @player.avatar.url.blank? %>
+			<%= image_tag @player.avatar.url , size: '100x100' , style: "border-radius: 10px;" %>
 		<% else %>
-		<%= image_tag "none.jpg" , alt: @player.name , size: '100x100' , style: "border-radius: 10px;" %>
+			<%= image_tag "none.jpg" , alt: @player.name , size: '100x100' , style: "border-radius: 10px;" %>
 		<% end  %>
 		<p> <h5> He is <%= @player.description %></h5></p>
 	</div>

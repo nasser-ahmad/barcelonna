@@ -3,7 +3,7 @@
 
 <div class="row ">
 	<div class="well col-md-8 col-md-offset-2">
-		<%= form_for @player do |f| %>
+		<%= form_for(@player , html: { multipart: true }) do |f| %>
 			<%=f.label :name %>
 			<%=f.text_field :name %>
 
@@ -12,7 +12,9 @@
 
 			<%=f.label :description %>
 			<%=f.text_area :description  %>
-
+			<span class="picture">
+			<%= f.file_field :avatar, accept: 'image/jpeg,image/jpg,image/gif,image/png' %>
+			</span>
 			<%=f.submit(@player.new_record? ? "Create player" : "Update player info", class: "btn btn-success") %>
 		<% end %>
 	</div>
