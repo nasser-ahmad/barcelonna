@@ -1,0 +1,24 @@
+<%= render 'shared/page_title' , title: @player.name %>
+<div class="row">
+	<div class="col-md-4 pull-right center">
+		<%unless @player.images.blank? %>
+					<%= image_tag @player.images.first.url , size: '100x100' , style: "border-radius: 10px;" %>
+		<% else %>
+		<%= image_tag "none.jpg" , alt: @player.name , size: '100x100' , style: "border-radius: 10px;" %>
+		<% end  %>
+		<p> <h5> He is <%= @player.description %></h5></p>
+	</div>
+	<div class="col-md-8 well">
+	<h4> <%= @player.name %> skills are:</h4>
+		<% @player.skills.each do |skill| %>
+			<p>
+				<%= skill.description %>
+			</p>
+
+		<% end %>
+	</div>
+
+</div>
+
+<h5><%= link_to "Return to players index" , players_path , class: "btn btn-warning btn-small" %></h5>
+	

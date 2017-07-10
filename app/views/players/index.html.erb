@@ -1,0 +1,32 @@
+<%= render 'shared/page_title' , title: "Players index" %>
+
+<% @players.each do |player| %>
+	
+	<div class="row">
+		<div class="col-md-2">
+			<section class="player_info center">
+				<%unless player.images.blank? %>
+					<%= image_tag player.images.first.url , size: '100x100' , style: "border-radius: 10px;" %>
+				<% else %>
+				<%= image_tag "none.jpg" , alt: player.name , size: '100x100' , style: "border-radius: 10px;" %>
+				<% end  %>
+
+				<h5> Player name: <%= player.name %> </h5>
+			</section>
+		</div>
+		<div class="col-lg-8 well">
+			<h4><%= link_to player.name, player_path(player) %> </h4>
+			<p><%= player.description %></p>
+
+			<p>
+				<span class="quiet">
+					<small> <%=time_ago_in_words(player.created_at) %> ago</small>
+				</span>
+			</p>
+		</div>
+	</div>
+	<hr/>
+	
+<% end %>
+
+

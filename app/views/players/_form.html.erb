@@ -1,0 +1,21 @@
+<%= render 'shared/errors' , obj: @player %>
+
+
+<div class="row ">
+	<div class="well col-md-8 col-md-offset-2">
+		<%= form_for @player do |f| %>
+			<%=f.label :name %>
+			<%=f.text_field :name %>
+
+			<%=f.label :age %>
+			<%=f.text_field :age %>
+
+			<%=f.label :description %>
+			<%=f.text_area :description  %>
+
+			<%=f.submit(@player.new_record? ? "Create player" : "Update player info", class: "btn btn-success") %>
+		<% end %>
+	</div>
+
+
+</div>
