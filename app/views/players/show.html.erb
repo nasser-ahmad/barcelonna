@@ -5,6 +5,11 @@
 			
 		</h5>
 	</div>
+	<div class="col-md-2">
+		<h5><%= link_to "Add skills to player"  , new_player_skill_path(@player) , class: "btn btn-success btn-small" %>
+			
+		</h5>
+	</div>
 </div>
 
 <div class="row">
@@ -21,6 +26,14 @@
 		<% @player.skills.each do |skill| %>
 			<p>
 				<%= skill.description %>
+				<span class="pull-right">
+					<%= link_to like_player_path(@player, like: true, skill_id: skill.id) ,method: :post do %>
+						<i class="glyphicon glyphicon-thumbs-up"></i>&nbsp <%= skill.skill_thumbs_up %>
+					<% end %>&nbsp&nbsp&nbsp&nbsp
+					<%= link_to like_player_path(@player, like: false ,skill_id: skill.id) ,method: :post do %>
+						<i class="glyphicon glyphicon-thumbs-down"></i>&nbsp <%= skill.skill_thumbs_down%>
+					<% end %>
+				</span>
 			</p>
 
 		<% end %>

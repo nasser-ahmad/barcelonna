@@ -38,6 +38,14 @@ class PlayersController < ApplicationController
 		end
 	end
 
+	def like
+		#binding.pry
+		@player = Player.find(params[:id])
+		@player.skills.find(params[:skill_id]).likes.create(like: params[:like],player_id: @player.id)
+		flash[:success] = "Your selection added successfully!!"
+		redirect_to player_path(@player)
+	end
+
 
 	private 
 		def require_params

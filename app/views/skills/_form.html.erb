@@ -1,0 +1,20 @@
+<%= render 'shared/errors' , obj: @skill %>
+
+
+<div class="row ">
+	<div class="well col-md-8 col-md-offset-2">
+		<%= form_for(@skill , url: player_skills_path, html: { multipart: true }) do |f| %>
+			<%=f.label :name %>
+			<%=f.text_field :name %>
+
+			<%=f.label :description %>
+			<%=f.text_area :description  %>
+			
+			<%=f.submit(@skill.new_record? ? "Create skill" : "Update skill info", class: "btn btn-success") %>
+		<% end %>
+	</div>
+
+
+</div>
+
+

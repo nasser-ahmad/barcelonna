@@ -2,7 +2,7 @@
 
 <% @players.each do |player| %>
 	
-	<div class="row">
+	<div class="row"">
 		<div class="col-md-2">
 			<section class="player_info center">
 				<%unless player.avatar.url.blank? %>
@@ -16,8 +16,22 @@
 		</div>
 		<div class="col-lg-8 well">
 			<h4><%= link_to player.name, player_path(player) %> </h4>
-			<p><%= player.description %></p>
+			<p><%= player.description %>. <bold> <%= player.name %></bold> skills are:</p>
 
+			<% player.skills.each do |skill| %>
+				<p>
+					<%= skill.description %>
+					<span class="pull-right">
+						<%= link_to like_player_path(player, like: true, skill_id: skill.id) ,method: :post do %>
+							<i class="glyphicon glyphicon-thumbs-up"></i>&nbsp <%= skill.skill_thumbs_up %>
+						<% end %>&nbsp&nbsp&nbsp&nbsp
+						<%= link_to like_player_path(player, like: false ,skill_id: skill.id) ,method: :post do %>
+							<i class="glyphicon glyphicon-thumbs-down"></i>&nbsp <%= skill.skill_thumbs_down%>
+						<% end %>
+					</span>
+				</p>
+
+			<% end %>
 			<p>
 				<span class="quiet">
 					<small> <%=time_ago_in_words(player.created_at) %> ago</small>
