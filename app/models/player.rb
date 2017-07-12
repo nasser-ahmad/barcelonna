@@ -10,6 +10,8 @@ class Player < ActiveRecord::Base
 
 	validate :avatar_size
 
+
+
 	private
 		def avatar_size
 			if avatar.size > 100.kilobytes

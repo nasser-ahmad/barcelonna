@@ -22,4 +22,10 @@ Rails.application.routes.draw do
     end
     resources :skills
   end
+
+  resources :admins , except: :get
+
+  get '/admin/register' , to: 'admins#new'
+
+  resources :users
 end

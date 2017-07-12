@@ -1,4 +1,5 @@
-class User < ActiveRecord::Base
+class Admin < ActiveRecord::Base
+
 	has_secure_password
 
 	validates :username , presence: true, length: {in: 5..20 } , uniqueness: true
@@ -7,4 +8,6 @@ class User < ActiveRecord::Base
 	 
 	validates :email , presence: true
 	validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
+
+
 end
